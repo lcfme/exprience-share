@@ -30,4 +30,10 @@ npm run 的脚本可以在 package.json 下的 script字段找到
 
 ### 2）项目中引入jQuery、bootstrap
 jQuery是支持umd加载的不解释，bootstrap的加载方式异常的古老
+它只是用一个函数创造了属于自己的作用域不污染全局变量，但是不支持任何模块加载机制
+```
+(function (jQuery) {
+  // bootstrap code here.
+})(jQuery);
+```
 
