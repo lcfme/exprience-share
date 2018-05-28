@@ -145,6 +145,8 @@ package.json 全局配置
 ### 5) a-json-parser
 npm: https://www.npmjs.com/package/a-json-parser
 
+![a-json-parser](./assets/253a7b1819e2af555ed0a7e0f11a0b59_hd.jpg)
+
 自己写的一个JSON parser 可以在json中加入注释，对象的键也不需要严格双引号。
 
 用到了webpack umd打包，先词法分析再递归向下完成解析。
