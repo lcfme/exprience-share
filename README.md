@@ -1,4 +1,4 @@
-# 技术分享
+# 楚楚街技术分享
 
 ## 小团子后台项目用到的技术
 项目采用webpack打包
@@ -65,3 +65,75 @@ Automatically load modules instead of having to import or require them everywher
     jQuery: require.resolve('jquery'),
   });
 ```
+
+# 杂气咋吧的小知识
+### 0) node 调试
+node --inspect-brk 配合Chrome就可以断点执行。
+### 1) require.resolve 函数
+node --inspect-brk ./require-resolve-demo
+```javascript
+require('file'); // 会将file引入
+require.resolve('file'); // 不会引入，但是会返回file的绝对路径。注意，如果file不存在会产生异常。
+```
+
+### 2) shelljs
+npm: https://www.npmjs.com/package/shelljs
+shelljs demo
+node ./shelljs-demo
+
+### 3) webpack模块加载远离
+how-module-work
+```javascript
+!(function (depsArr) {
+    var rootModule = {};
+    function __require__(id) {
+        if (!rootModule[id]) {
+            var module = {};
+            module.id = id;
+            module.exports = {};
+            depsArr[id](module.exports, module, __require__);
+            rootModule[id] = module;
+            return module.exports;
+        } else {
+            return rootModule[id].exports;
+        }
+    }
+    __require__(0);
+})([
+    function (exports, module, require) {
+        var a = require(1);
+        var b = require(2);
+        console.log('var a: ', a);
+        console.log('var b: ', b);
+    },
+    function (exports, module, require) {
+        exports.name = 1;
+    },
+    function (exports, module, require) {
+        module.exports = {
+            msg: 'ok',
+        }
+    }
+])
+```
+以上代码也解释了为什么exports不能直接被赋值
+
+### 4）excelify
+将txt专程excel的插件
+npm: https://www.npmjs.com/package/exelify
+该项目需要npm install -g exelify 全局安装
+package.json 全局配置
+```javascript
+ {
+   "bin": "./bin.js", /* bin代表向外暴露环境变量的脚本名称 */
+   "main": "./index.js", /* 通过require引入时的入口文件 默认就是index.js */
+ }
+```
+
+### 5) a-json-parser
+npm: https://www.npmjs.com/package/a-json-parser
+
+自己写的一个JSON parser 可以在json中加入注释，对象的键也不需要严格双引号。
+
+用到了webpack umd打包，先词法分析再递归向下完成解析。
+
