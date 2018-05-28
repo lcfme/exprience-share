@@ -103,8 +103,12 @@ how-module-work
     function (exports, module, require) {
         var a = require(1);
         var b = require(2);
-        console.log('var a: ', a);
-        console.log('var b: ', b);
+        var c = require(3);
+        var d = require(3);
+        console.log('var a = ', a);
+        console.log('var b = ', b);
+        console.log('c = ', c)
+        console.log('c === d; ', c === d);
     },
     function (exports, module, require) {
         exports.name = 1;
@@ -113,6 +117,14 @@ how-module-work
         module.exports = {
             msg: 'ok',
         }
+    },
+    function (exports, module, require) {
+        var a = {
+            data: [{a: 1}],
+            status: 'ok',
+        }
+        console.log('<<<<<<');
+        module.exports = a;
     }
 ])
 ```
