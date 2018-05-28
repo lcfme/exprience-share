@@ -149,3 +149,9 @@ npm: https://www.npmjs.com/package/a-json-parser
 
 用到了webpack umd打包，先词法分析再递归向下完成解析。
 
+
+
+
+
+# 几种开源协议的区别
+![zhuangbi](./assets/253a7b1819e2af555ed0a7e0f11a0b59_hd.jpg)
