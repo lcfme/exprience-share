@@ -54,3 +54,14 @@ const jQuery = require('jquery');
 copy-webpack-plugin在编译时会将项目根目录下的static文件中将jQuery、Bootstrap拷贝到dist文件下的assets中，实现静态资源。但是这种方法有弊端，bootstrap和jQuery没有被npm做版本管理。
 第二种方案是用 expose-loader 全局引入 jquery
 代码见 expose-loader-demo
+如果引入bootstrap可能还会有问题，因为webpack在编译bootstrap会替换变量名bootstrap.js自执行函数中的参数jQuery可能会变成其他的，所以还需要providePlugin。
+providePlugin的英文描述是
+Automatically load modules instead of having to import or require them everywhere.
+就是告诉webpack遇到变量名$ 或者 jQuery自动引入哪些包
+
+```javascript
+  new webpack.ProvidePlugin({
+    $: require.resolve('jquery'),
+    jQuery: require.resolve('jquery'),
+  });
+```
