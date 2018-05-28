@@ -1,0 +1,33 @@
+{
+  "name": "exp-share",
+  "version": "0.0.0",
+  "description": "for share meeting.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "expose-loader-demo": "webpack --config ./expose-loader-demo/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcfme/exprience-share.git"
+  },
+  "author": "Liu Chaofan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lcfme/exprience-share/issues"
+  },
+  "homepage": "https://github.com/lcfme/exprience-share#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "expose-loader": "^0.7.5",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.9.1",
+    "webpack-cli": "^2.1.4",
+    "webpack-merge": "^4.1.2"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
